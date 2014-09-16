@@ -1,0 +1,91 @@
+%%A program to make slides on pythagoras theorem
+%to include themes, animation, title slide, blocks, table and figures
+
+\documentclass[10pt]{beamer}
+
+\usepackage{url}			%for url's to be included in tex file 
+\usepackage{hyperref}		%for url's to be included in pdf file
+\usepackage{multirow}		%to be used in tables
+\usepackage{graphicx}		%for graphics(here it is used to insert images)
+\usepackage{wasysym}		%for using various symbols
+
+\usetheme{Warsaw}
+%default is there if not specified
+\setbeamercovered{invisible}
+%we can use transparent/invisible/dynamic too
+\usecolortheme{beaver}
+%color scheme is beaver
+\setbeamertemplate{navigation symbols}{}
+%remove navigation symbols
+
+\title[Pythagroras theorem 1]{A Visual Proof Of The Pythagorean Theorem}
+%Mine proof of pythagoras
+\subtitle{Pythagoras theorem}
+\author[Pythagoras of Samos]{Pythagoras}
+%I am pythagoras
+\date{\today}
+%todays date
+
+%\url{http://www.stack.nl/~jwk/latex/}
+%\textcolor<2>{orange}{Example Text
+%\begin{enumerate}[(I)]
+%\item<1-> Point A
+
+
+\begin{document}
+%\maketitle              %it will show the title page again
+\begin{frame}
+	\titlepage			%it will show the title page just like maketitle
+\end{frame}
+
+\begin{frame}{Outline}
+	\tableofcontents
+\end{frame}
+
+\section{\underline{Introduction to Pythagoras Theorem}}
+
+\begin{frame}{Introduction}
+\label{sec:intro}
+
+%This is a introduction to my proof on pythagoras theorem  and its details....
+
+The theorem is of fundamental importance in Euclidean Geometry where it serves 
+as a basis for the definition of distance between two points.
+\emph{The area of the square built upon the hypotenuse of a right
+triangle is equal to the sum of the areas of the squares upon the
+remaining sides}.
+\end{frame}
+
+\section{\underline{Theorem, Definition And Relation}}
+\label{sec:def}
+\subsection{Theorem}
+\begin{frame}{Theorem}
+The square of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the other two sides
+\end{frame}
+
+\subsection{Definition}
+\begin{frame}{Definition}
+The theorem that the sum of the squares of the lengths of the sides of a right triangle is equal to the square of the length of the hypotenuse.
+\end{frame}
+
+\subsection{Relation}
+\begin{frame}{Relation}
+	\begin{itemize}
+	\item For making slides
+		\pause
+		\visible<6-6>
+		{
+		\item Why not office?
+		}
+	\end{itemize}
+In mathematics, the Pythagorean theorem or Pythagoras theorem is a relation in Euclidean geometry among the three sides of a right triangle. The theorem can be written as an equation relating the lengths of the sides a, b and c, often called the Pythagorean equation:
+\begin{equation}
+\label{one}
+a^2+b^2=c^2
+\end{equation}
+where c represents the length of the hypotenuse, and a and b represent the lengths of the other two sides.
+
+\end{frame}
+
+\end{document}
+

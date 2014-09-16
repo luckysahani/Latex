@@ -1,0 +1,154 @@
+\documentclass[]{article}
+
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{amsthm}
+\usepackage[]{amsmath}
+\usepackage{amssymb}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+
+\title{CS201 Assignment 3 }
+
+\author{Lucky Sahani\\
+      Roll - 12383\\
+       Instructor - Prof. S K Mehta \\
+	       Email:\texttt{luckys@iitk.ac.in}}
+		\date{\today}
+
+\begin{document}
+\maketitle
+
+\section { Question 3.1 : }
+\label{sec:q1}
+{\bf Question :} How many permutations, $\sigma$ , of [n] exist in which one of the following holds: $\sigma(n - 2) > (n - 2)$ or $\sigma(n - 1) > (n - 1) $ ?\\
+{\bf Solution : } Let A denotes the condition : $\sigma(n - 2) > (n - 2)$ and B denote the condition  $\sigma(n - 1) > (n - 1) $ . Now , we need to find A $\cup$ B which can be calculated by the principle of inclusion and exclusion i.e.
+\begin {center}
+$|A \cup B| = |A| + |B| - |A \cap B| $
+\end{center}
+So , we have to calculate no. of permutations that satisfy A , B and $A\cap B$ :
+\subsection{To calculate the number of permutations that satisfies the condition A }
+Now , there are only two possibilities depending on the fact that whether $\sigma(n-2)=n-1$ or $\sigma(n-2)=n$. If $\sigma(n-2)=n-1$ is true , then number of permutations possible is same as arranging (n-1) objects among themselves , which is equal to (n-1)! . If $\sigma(n-2)=n$ is true , then number of permutations possible is same as arranging the (n-1) objects among themselves , which is equal to (n-1)! . 
+\begin{center}
+$\therefore$ Number of permutation that satisfy A = 2*(n - 1)!
+\end{center}
+
+\subsection{ To calculate the number of permutations that satisfies the condition B }
+There is only one possibility which is $\sigma(n-1)=n$ . The total number of permutation satisfying this condition is same as permuting the remaining n-1 objects among themselves .
+\begin{center}
+$\therefore$ Number of permutation that satisfy B = (n - 1)!
+\end{center}
+
+\subsection{ To calculate the number of permutations that satisfies the condition  $A \cap B $ }
+In this case , we have only one possibility that is $\sigma(n-1)=n$ and $\sigma(n-2)=n-1$ . Number of cases is same as permuting the remaining n-2 objects among themselves.
+\begin{center}
+$\therefore$ Number of permutation that satisfy $A \cap B = (n - 2)!$
+\end{center}
+
+\subsection{ To calculate the number of permutations that satisfies the condition $A \cup B $ }
+By principle of inclusion and exclusion , we can say that 
+\begin{center}
+$|A \cup B| = |A| + |B| - |A \cap B| $
+$= 2*(n-1)! + (n-1)! - (n-2)! $\\
+$= 3*(n-1)! - (n-2)! $
+\end{center}
+Number of  permutations, $\sigma$ , of [n] , in which one of the following holds: $\sigma(n - 2) > (n - 2)$ or $\sigma(n - 1) > (n - 1) $ is equal to $ 3*(n-1)! - (n-2)! $\\
+$\therefore$Number of permutations in which exactly one of the above condition holds = $|B| = 3(n - 1)! - 2(n - 2)! = (3n - 5) * (n-2)!$.
+
+
+
+\section { Question 3.3 :}
+\label{sec:q2}
+{\bf Question :}
+In how many permutations, $\sigma$ , $ \sigma (i) > \sigma(i + 1)$ exactly when $i \in  { 1 , 4 , 6 } ?$\\
+{\bf Solution : } Following are the equations that need to be satisfied :
+\begin{align}
+\sigma (1) > \sigma(2)\\
+\sigma (2) < \sigma(3)\\
+\sigma (3) < \sigma(4)\\
+\sigma (4) > \sigma(5)\\
+\sigma (5) < \sigma(6)\\
+\sigma (6) > \sigma(7)\\
+\sigma (7) < \sigma(8)
+\end{align}
+Let $A_{i_1,i_2\cdots i_n}$ denote the set of permutations of [8] which have 
+\begin{center}
+$\sigma(i_k) > \sigma(i_k + 1)$ such that $1 \leq k \leq n.$
+\end{center}
+Number of permutations that satisfy the above conditions is same as number of permuataions that do satisfy $A_{1,4,6}$ and do not satisfy for i in ${ 2,3 ,5,7}$ .\\
+Let $B_i = A_{1,4,6,i} $ ,$i \in \{2,3,5,7\}$.\\
+Therefore , requires number of permutations is equal to number of elements not in $B_2,B_3,B_5,B_7$.\\
+Applying the principle of inclusion and exclusion . We define that $|A_{i_1,i_2\cdots i_n}|$ is equal to $8!$ divided by $(k+1)!$ where k is length of consecutive indices . We can prove that by fixing 'k+1' elements in any permutations of [8] , then the number of ways we can arrange them is 1 in each permutation . Therefore , in $(K+1)!$ permutations of [8] , only 1 satisfies this constraint . Thus , number of permutations of [8] satisfying $A_{s_1,s_2,.....,s_j}$ is equal to $8! / (k+1)!$ where k is the length of all consecutive indices . 
+For example $|A_{2,45}|= \frac{8!}{(3!)(2!)}$ as it has one consecutive sequence of $(4,5)$ of length 2 and one of $(2)$ of length 1.\\
+$\therefore \quad$ Required number of permutations satisfying all the above conditions = \\
+$|A_{1,4,6}|- \sum B_i + \sum B_i \cap B_j - \sum B_i \cap B_j \cap B_k + \sum B_i \cap B_j \cap B_k \cap B_l$\\
+$Ans = |A_{1,4,6}|-|A_{1,2,4,6}|-|A_{1,3,4,6}|-|A_{1,4,5,6}|-|A_{1,4,6,7}|+|A_{1,2,3,4,6}|+|A_{1,2,4,5,6}|+|A_{1,2,4,6,7}|+|A_{1,3,4,5,6}|+|A_{1,3,4,6,7}|+|A_{1,4,5,6,7}|-|A_{1,2,3,4,5,6}|-|A_{1,2,3,4,5,7}|\\-|A_{1,2,4,5,6,7}|-|A_{1,3,4,5,6,7}|+|A_{1,2,3,4,5,6,7}|$
+\paragraph{}
+$= \frac{8!}{(2!)(2!)(2!)}-\frac{8!}{(3!)(2!)(2!)}-\frac{8!}{(2!)(3!)(2!)}-\frac{8!}{(2!)(4!)}-\frac{8!}{(2!)(2!)(3!)}+\frac{8!}{(5!)(2!)}+\frac{8!}{(3!)(4!)}+\frac{8!}{(3!)(2!)(3!)}+\frac{8!}{(2!)(5!)}+\frac{8!}{(2!)(3!)(3!)}+\frac{8!}{(2!)(5!)}-\frac{8!}{(7!)}-\frac{8!}{(5!)(3!)}-\frac{8!}{(3!)(5!)}-\frac{8!}{(2!)(6!)}+\frac{8!}{(8!)}$
+\paragraph{}
+Ans = $5040-1680-1680-840-1680+168+280+560+168+560+168-8-56-56-28+1=917$
+
+\begin{center}
+$\therefore$ Number of permutations satisfying above conditions are 917.
+\end{center}
+
+
+\section { Question 3.5 : }
+\label{sec:q3}
+
+{\bf Question : }How many integers less than 210 are relatively prime to 210? (We need to solve this problem using Inclusion-Exclusion principle) \\
+{\bf Solution : }  The integers that are relatively prime to 210 is same as all the numbers which are not divisible by its prime factors. 
+\begin{center}
+Total number of integers  =210\\
+$210 = 2*3*5*7$
+\end{center}
+Let $(A_1,A_2,A_3,A_4)$ denote the family of subset of its  factors , where , \\
+$|A_1|$ denotes the numbers divisible by 2 which is less than or equal to 210 .  \\
+$|A_2|$ denotes the numbers divisible by 3 which is less than or equal to 210 .  \\
+$|A_3|$ denotes the numbers divisible by 5 which is less than or equal to 210 .  \\
+$|A_4|$ denotes the numbers divisible by 7 which is less than or equal to 210 .  \\
+Now,  by the Principle of Inclusion and Exclusion , number of integers less than 210 which are relatively prime to 210 is equal to: \\
+$\Rightarrow$
+(Total number of integers) - ( $|A_1 \cup A_2 \cup A_3 \cup A_4|$ ) =\\
+ $   210 - ( \sum |A_i| -\sum (|A_i \cap A_j|) + \sum(|A_i \cap A_j \cap A_k|) - (|A_1 \cap A_2 \cap A_3 \cap A_4| ))\vspace{3 mm}$\\
+Now,
+\begin{center}
+$\sum |A_i| = |A_1| + |A_2| + |A_3| + |A_4| = 105 + 70 + 42 + 30 = 247 $\\
+$\sum (|A_i \cap A_j|)=   |A_1 \cap A_2| - |A_1 \cap A_3| - |A_1 \cap A_4|  - |A_2 \cap A_3| - |A_2 \cap A_4| - |A_3 \cap A_4| $
+= 35 + 21 + 15 + 14 + 10 + 6 =  101 \\
+$\sum (|A_i \cap A_j \cap A_j|)= |A_1 \cap A_2 \cap A_3| + |A_1 \cap A_2 \cap A_4| + |A_2 \cap A_3 \cap A_4| + |A_1 \cap A_4 \cap A_3|   $
+= 7 + 5 + 2 + 3= 17 \\
+\end{center}
+Also , ($ |A_1 \cap A_2 \cap A_3 \cap A_4|) = 1 $ 
+\begin{center}
+$\therefore$ Number of integers less than 210 which are relatively prime to 210\\ = 210 - 247 +101 -17 + 1 = 48
+\end{center}
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
