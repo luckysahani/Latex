@@ -1,0 +1,88 @@
+\documentclass{beamer}
+%
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+\mode<presentation>
+{
+  \usetheme{default}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{default} % or try albatross, beaver, crane, ...
+  \usefonttheme{default}  % or try serif, structurebold, ...
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+} 
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\title[Your Short Title]{Motion Detection Surveillance System Using Background Subtraction Algorithm}
+\author{Rupali S.Rakibe , Bharati D.Patil}
+\date{\today}
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+\begin{frame}{Brief Outline}
+ \tableofcontents
+\end{frame}
+\section{Abstract}
+\begin{frame}{Abstract}
+\begin{itemize}
+\item 
+This paper presents a novel algorithm for motion detection from a stationary background scene to detect moving object based on background subtraction. \\
+\item 
+The main algorithm being discussed here are those implementing image subtraction methods and background segmentation approach.\\
+\item 
+This paper is aimed to give readers a main idea of the architecture of a human motion detection system in applications.\\
+\item 
+The experiment results show that the proposed method runs rapidly, robustly, exactly and accurate for the concurrent detection.\\
+\end{itemize}
+\end{frame}
+\section{Introduction}
+\begin{frame}{Introduction}
+\begin{itemize}
+\item
+A motion detection algorithm begins with the segmentation part where foreground or moving objects are segmented from the background .\\
+\item
+The simplest way to implement this is to take an image as background and take the frames obtained at the time t, denoted by I(t) to compare with the background image denoted by B.\\
+\item
+Here using simple arithmetic calculations, we can segment out the objects simply by using image subtraction technique of computer vision meaning for each pixels in I(t), take the pixel value denoted by P[I(t)] and subtract it with the corresponding pixels at the same position on the background image denoted as P[B]. \\
+\end{itemize}
+\end{frame}
+\section{Purpose and Objective}
+\begin{frame}{Purpose and Objective}
+The Video Motion Detection module provides the techniques and methodology to detect motion and to develop a module for a technique .\\
+This module would record down motion and pass it into the next module that would be on object classification where it classify human and non-human object.\\
+The project come up with a solution that detects motion effectively and record it down with one or more objects that are moving and causing motions.\\
+The purpose of this project is to help new researchers learn and further research on their topic of interest, which in this case
+is the human motion detection system. 
+\end{frame}
+\section{Background Modelling}
+\begin{frame}{Background Modelling}
+Let t2 denotes the time that a background is updated. An updating function denoted by
+Fn[B(t2)] refers to the function to update the background image B at time t2.\\
+Therefore, after performing the initial calculation, the foreground is now extracted from this new background denoted by B(t2).\\
+P[F(t)]=P[I(t)] - P[B(t2)]\\
+Where B(t2)=Fn[B] meaning B(t2) is calculated by an updating function that is performed on the previous background. \\
+Use the data collected from the frames and performs some calculation on the background image by taking down all the pixels of all the frames before time t2 and then simply take average value and update the background B to get a new background B(t2) with this average value. 
+\end{frame}
+\section{Background Subtraction}
+\begin{frame}{Background Subtraction}
+\texttt{Background subtraction} involves calculating a reference image, subtracting each new frame from this image and thresholding the result. What results is a binary segmentation of the image which highlights regions of non-stationary objects. The simplest form of the reference image is a time-averaged background image.\\
+\begin{itemize}
+\item Estimate the background for time t.
+\item Subtract the estimated background from the input frame.
+\item Apply a threshold, Th, to the absolute difference to get the foreground mask.
+\end{itemize}
+\end{frame}
+\section{Conclusion}
+\begin{frame}{Conclusion}
+\begin{itemize}
+\item Objects could be tracked between frames rather than simply performing human motion detection on single frames.
+\item As described above, the current model of motion does not take into account the time dependent nature of a walking human.
+\item Much greater accuracy would be possible with a detector and model that takes advantage of this periodicity in time.
+\item The current background subtraction algorithm can be confused by fast lighting changes or moving shadows. 
+\item A better algorithm would use a technique based on optical flow for the image segmentation. This approach would also allow the camera to be in motion relative to the background.
+\end{itemize}
+\end{frame}
+\end{document}
